@@ -1,1 +1,0 @@
-(()=>{"use strict";console.log("function"),console.log(typeof o);var o=function(){};console.log("here"),console.log(7)})();

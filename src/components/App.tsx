@@ -1,5 +1,9 @@
-import React from "react";
-
+import "./App.scss";
 export const App = () => {
-  return <div>Hello world!!</div>;
+  return (
+    <div>
+      Hello world!!
+      <button>Touch</button>
+    </div>
+  );
 };
