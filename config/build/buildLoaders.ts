@@ -5,9 +5,18 @@ import { BuildOptions } from "./types/types";
 export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
   const isDev = options.mode === "development";
 
-  const cssLoader = {
-    test: /\.css$/i,
-    use: ["style-loader", "css-loader"],
+  // const cssLoader = {
+  //   test: /\.css$/i,
+  //   use: ["style-loader", "css-loader"],
+  // };
+
+  const cssLoaderWithModules = {
+    loader: "css-loader",
+    options: {
+      modules: {
+        localIdentName: isDev ? "[path][name]__[local]" : "[hash:base64:8]",
+      },
+    },
   };
 
   const scssLoader = {
@@ -16,7 +25,7 @@ export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
       // Creates `style` nodes from JS strings
       isDev ? "style-loader" : MiniCssExtractPlugin.loader,
       // Translates CSS into CommonJS
-      "css-loader",
+      cssLoaderWithModules,
       // Compiles Sass to CSS
       "sass-loader",
     ],
@@ -27,5 +36,5 @@ export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
     exclude: /node_modules/,
   };
 
-  return [cssLoader, scssLoader, tsLoader];
+  return [scssLoader, tsLoader];
 }
