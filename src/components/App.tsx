@@ -4,8 +4,16 @@ import classes from "./app.module.scss";
 import photo from "@/assets/photo.jpg";
 import Cloud from "@/assets/cloud.svg";
 export const App = () => {
+  if (__PLATRORM__ === "mobile") {
+    return <div>Is mobile platform</div>;
+  }
+  if (__PLATRORM__ === "desktop") {
+    return <div>Is desktop platform</div>;
+  }
+
   return (
     <div>
+      <h2>Platfrom={__PLATRORM__}</h2>
       <Link to={"/about"}>About</Link>
       <br />
       <Link to={"shop"}>Shop</Link>

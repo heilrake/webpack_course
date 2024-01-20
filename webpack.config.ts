@@ -1,13 +1,18 @@
 import webpack from "webpack";
 
 import { buildWebpack } from "./config/build/buildWebpack";
-import { type BuildMode, BuildPaths } from "./config/build/types/types";
+import {
+  type BuildMode,
+  BuildPaths,
+  type BuildPlatform,
+} from "./config/build/types/types";
 import path from "path";
 
 interface EnvVariable {
-  mode: BuildMode;
-  port: number;
+  mode?: BuildMode;
+  port?: number;
   analyzer?: boolean;
+  platform?: BuildPlatform;
 }
 
 export default (env: EnvVariable) => {
@@ -23,6 +28,7 @@ export default (env: EnvVariable) => {
     mode: env.mode ?? "development",
     paths: paths,
     analyzer: env.analyzer,
+    platform: env.platform ?? "desktop",
   });
 
   return config;

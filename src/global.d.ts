@@ -14,3 +14,6 @@ declare module "*svg" {
   const SVG: React.VFC<React.SVGProps<SVGSVGElement>>;
   export default SVG;
 }
+
+declare const __PLATRORM__: "mobile" | "desktop";
+declare const __DEV__: "dev" | "prod";
