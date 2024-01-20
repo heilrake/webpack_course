@@ -10,6 +10,11 @@ export const App = () => {
   if (__PLATRORM__ === "desktop") {
     return <div>Is desktop platform</div>;
   }
+  function checkTS(a: string) {
+    console.log(a);
+  }
+
+  checkTS(123);
 
   return (
     <div>
