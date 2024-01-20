@@ -4,6 +4,7 @@ export type BuildPlatform = "mobile" | "desktop";
 export interface BuildPaths {
   entry: string;
   html: string;
+  public: string;
   output: string;
   src: string;
 }

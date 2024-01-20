@@ -5,6 +5,8 @@ import { BuildOptions } from "./types/types";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
+import path from "path";
+import CopyPlugin from "copy-webpack-plugin";
 
 export function buildPlugins(options: BuildOptions): Configuration["plugins"] {
   const { mode, paths, analyzer, platform } = options;
@@ -15,6 +17,7 @@ export function buildPlugins(options: BuildOptions): Configuration["plugins"] {
   const plugins: Configuration["plugins"] = [
     new HtmlWebpackPlugin({
       template: paths.html,
+      favicon: path.resolve(paths.public, "favicon.ico"),
     }),
     new DefinePlugin({
       __PLATRORM__: JSON.stringify(platform),
@@ -34,6 +37,16 @@ export function buildPlugins(options: BuildOptions): Configuration["plugins"] {
         chunkFilename: "css/[name].[contenthash:8].css",
       }),
     );
+    // plugins.push(
+    //   new CopyPlugin({
+    //     patterns: [
+    //       {
+    //         from: "source",
+    //         to: "dest",
+    //       },
+    //     ],
+    //   }),
+    // );
   }
 
   if (analyzer) {
