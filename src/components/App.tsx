@@ -4,17 +4,17 @@ import classes from "./app.module.scss";
 import photo from "@/assets/photo.jpg";
 import Cloud from "@/assets/cloud.svg";
 export const App = () => {
-  if (__PLATRORM__ === "mobile") {
-    return <div>Is mobile platform</div>;
-  }
-  if (__PLATRORM__ === "desktop") {
-    return <div>Is desktop platform</div>;
-  }
-  function checkTS(a: string) {
-    console.log(a);
-  }
-
-  checkTS(123);
+  // if (__PLATRORM__ === "mobile") {
+  //   return <div>Is mobile platform</div>;
+  // }
+  // if (__PLATRORM__ === "desktop") {
+  //   return <div>Is desktop platform</div>;
+  // }
+  // function checkTS(a: string) {
+  //   console.log(a);
+  // }
+  //
+  // checkTS(123);
 
   return (
     <div>

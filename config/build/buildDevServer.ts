@@ -6,5 +6,6 @@ export function buildDevServer(options: BuildOptions): DevServerConfiguration {
     open: true,
     // якщо роздавати статику через nginx то треба робити проксування на index.html
     historyApiFallback: true,
+    hot: true,
   };
 }

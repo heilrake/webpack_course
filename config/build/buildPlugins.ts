@@ -4,6 +4,7 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { BuildOptions } from "./types/types";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
+import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 
 export function buildPlugins(options: BuildOptions): Configuration["plugins"] {
   const { mode, paths, analyzer, platform } = options;
@@ -18,11 +19,12 @@ export function buildPlugins(options: BuildOptions): Configuration["plugins"] {
     new DefinePlugin({
       __PLATRORM__: JSON.stringify(platform),
     }),
-    new ForkTsCheckerWebpackPlugin(),
   ];
 
   if (isDev) {
     plugins.push(new webpack.ProgressPlugin()); // может замедлять зборку на больших проектах
+    plugins.push(new ForkTsCheckerWebpackPlugin()); // виносить перевірку типів в окремий процес, ніяк не впливає на нагрузку при зборці
+    plugins.push(new ReactRefreshWebpackPlugin());
   }
 
   if (isProd) {
