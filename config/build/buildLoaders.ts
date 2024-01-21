@@ -74,5 +74,25 @@ export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
     exclude: /node_modules/,
   };
 
-  return [scssLoader, tsLoader, assetLoader, svgrLoader];
+  const babelLoader = {
+    test: /\.tsx?$/,
+    exclude: /node_modules/,
+    use: {
+      loader: "babel-loader",
+      options: {
+        presets: [
+          "@babel/preset-env",
+          "@babel/preset-typescript",
+          [
+            "@babel/preset-react",
+            {
+              runtime: isDev ? "automatic" : "classic",
+            },
+          ],
+        ],
+      },
+    },
+  };
+
+  return [scssLoader, babelLoader, assetLoader, svgrLoader];
 }
