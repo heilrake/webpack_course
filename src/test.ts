@@ -1,12 +1,16 @@
-export function calc(a: number, b: number) {
-  return a + b;
+function fizzBuzz(n: number): string[] {
+  const result: string[] = [];
+  for (let i = 1; i <= n; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+      result.push('FizzBuzz');
+    } else if (i % 3 === 0) {
+      result.push('Fizz');
+    } else if (i % 5 === 0) {
+      result.push('Buzz');
+    } else {
+      result.push(i.toString());
+    }
+  }
+  return result;
 }
-
-console.log(typeof f1);
-console.log(typeof f2);
-// console.log(typeof f3);
-
-function f1() {}
-
-var f2 = function () {};
-let f3 = function () {};
+fizzBuzz(5);
